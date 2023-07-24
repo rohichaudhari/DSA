@@ -6,7 +6,7 @@ void display()
     int i;
     for(i=0;i<=top;i++)
     {
-        printf("%d",a[i]);
+        printf("\t %d",a[i]);
     }
 }
 int insert(int val)
@@ -35,8 +35,34 @@ int delete()
 int main()
 {
     int ch;
-    printf("1.insert");
-    printf("2.delete");
-    printf("3.display");
-    prinf("4.exit");
+    printf("\n1.insert");
+    printf("\n2.delete");
+    printf("\n3.display");
+    printf("\n4.exit");
+    while(ch!=4)
+    {
+        printf("\nenter choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+            insert(10);
+            insert(20);
+            insert(30);
+            insert(40);
+            insert(50);
+            break;
+            case 2:
+            delete();
+            break;
+            case 3:
+            display();
+            break;
+            case 4:
+            printf("exit:");
+            break;
+            default:
+            printf("please enter valid number:");
+        }
+    };
 }
