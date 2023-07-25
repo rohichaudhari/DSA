@@ -4,9 +4,14 @@ int  a[n],top=-1,i,c;
 void display()
 {
     int i;
+    if(top<0)
+    printf("Array is empty..\n");
+    else
+    {
     for(i=0;i<=top;i++)
     {
         printf("\t %d",a[i]);
+    }
     }
 }
 int insert(int val)
@@ -19,6 +24,7 @@ int insert(int val)
     {
         top++;
         a[top]=val;
+        printf("insert elsement is:%d",a[top]);
     }
 }
 int delete()
@@ -29,53 +35,88 @@ int delete()
     }
     else
     {
+        printf("Deleted element is:%d",a[top]);
         top--;
     }
+   
 }   
 int fdelete()
 {
-    c=a[0];
+    if(top<0)
+    printf("\n Array is empty..");
+    else
+    {
+    printf("Deleted element is:%d",a[0]);
+   
     for(i=0;i<top;i++)
     {
         a[i]=a[i+1];
     }
-    a[top--]=c;
+    top--;
+    }
+}
+int finsert(int val)
+{
+    if(top>=n-1)
+    {
+        printf("array is  full..");
+    }
+    else if(top<0)
+    {
+        top++;
+        a[top]=val;
+    } 
+    else
+    {
+        top++;
+        for(i=top;i>=0;i--)
+        {
+            a[i]=a[i-1];
+           
+        }
+        a[0]=val;
+        printf("insert element is:%d",val);
+    }
 }
 int main()
 {
-    int ch;
-    printf("\n1.insert");
-    printf("\n2.delete");
-    printf("\n3.display");
-    printf("\n4.fdelete");
-    printf("\n5.exit");
-    while(ch!=5)
+    int ch,m;
+    printf("\n1.insert at end");
+    printf("\n2.delete at end");
+    printf("\n3.display Array");
+    printf("\n4.delete at first");
+    printf("\n5.finsert at first");
+    printf("\n6.exit");
+    while(ch!=6)
     {
         printf("\nenter choice:");
         scanf("%d",&ch);
         switch(ch)
         {
             case 1:
-            insert(10);
-            insert(20);
-            insert(30);
-            insert(40);
-            insert(50);
-            break;
+                printf("enter element:");
+                scanf("%d",&m);
+                insert(m);
+                break;
             case 2:
-            delete();
-            break;
+                delete();
+                break;
             case 3:
-            display();
-            break;
+                display();
+                break;
             case 4:
-            fdelete();
-            break;
+                fdelete();
+                break;
             case 5:
-            printf("exit:");
-            break;
+                printf("enter m:");
+                scanf("%d",&m);
+                finsert(m);
+                break;
+            case 6:
+                printf("exit:");
+                break;
             default:
-            printf("please enter valid number:");
+                printf("please enter valid number:");
         }
     };
 }
